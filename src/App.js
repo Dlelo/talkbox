@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import AllChats from './components/AllChats';
 import NavigationBar from './components/NavigationBar';
+import Footer from './components/Footer';
 
 // three components (Navigation Bar, AllChats, Footer) will load on intial so they will be wrapped in an empty quotes called fragment
 
@@ -25,6 +26,7 @@ function App() {
     <NavigationBar/>
     {/* we pass props to our components  eg add chats in allChats */}
     <AllChats theChats ={chats}/>
+    <Footer/>
     </>
   );
 }
