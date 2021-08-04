@@ -1,24 +1,16 @@
-import logo from './logo.svg';
+import { link } from 'fs';
 import './App.css';
+import AllChats from './components/AllChats';
+import NavigationBar from './components/NavigationBar';
+
+// two components will load on intial so they will be wrapped in empy quotes(fragment)
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    < >
+    <NavigationBar/>
+    <AllChats/>
+    </>
   );
 }
 
