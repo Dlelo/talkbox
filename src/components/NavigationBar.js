@@ -8,7 +8,7 @@ import { Col } from 'react-bootstrap';
 export function NavigationBar () {
    return (
        <Container>
-          <Row>
+          <Row style={{ marginBottom: '5%'}}>
           <Col  xs={6} sm={8} md={8} lg={8}> <h6>TALKBOX</h6></Col>
           <Col  xs={3} sm={2} md={2} lg={2}>Search</Col>
           <Col  xs={3} sm={2} md={2} lg={2}>User Photo</Col>
