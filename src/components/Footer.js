@@ -12,12 +12,12 @@ import {Bell} from 'react-bootstrap-icons'
 export function Footer () {
    return (
        <Container>
-           <Card style={{ borderRadius: '100px', height:'5rem'}}>
-            <Row style={{ padding: '5%'}}>
-                    <Col  xs={5} sm={7} md={7} lg={7}> 
+           <Card style={{ borderRadius: '100px', height:'4rem', boxShadow:'1px 0px 17px 9px rgb(32 33 36 / 28%)' }}>
+            <Row style={{ padding: '1rem'}}>
+                    <Col  xs={5} sm={7} md={6} lg={6}> 
                        <Telephone  size={30} />
                     </Col>
-                    <Col  xs={4} sm={3} md={3} lg={3}>
+                    <Col  xs={4} sm={3} md={4} lg={4}>
                        <HouseDoor size={30}/>
                        </Col>
                     <Col  xs={3} sm={2} md={2} lg={2}>
