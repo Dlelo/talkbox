@@ -6,9 +6,10 @@ import {Card} from 'react-bootstrap';
 import {Telephone} from 'react-bootstrap-icons';
 import {HouseDoor} from 'react-bootstrap-icons';
 import {Bell} from 'react-bootstrap-icons'
+import { Link } from "react-router-dom";
 
 
-// NavigationBar Component
+// Footer Component
 export function Footer () {
    return (
        <Container>
@@ -18,8 +19,8 @@ export function Footer () {
                        <Telephone color="rgb(150 152 154)" size={30} />
                     </Col>
                     <Col  xs={4} sm={3} md={4} lg={4}>
-                       <HouseDoor color="rgb(15,91,184)" size={30}/>
-                       </Col>
+                        <Link to='/'> <HouseDoor color="rgb(15,91,184)" size={30}/></Link>
+                     </Col>
                     <Col  xs={3} sm={2} md={2} lg={2}>
                        <Bell color="rgb(150 152 154)" size={30}/>
                      </Col>
