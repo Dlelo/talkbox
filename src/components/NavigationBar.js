@@ -17,7 +17,7 @@ export function NavigationBar () {
           <Col  xs={6} sm={8} md={8} lg={8}> 
              <Row>
                  <Col  xs={2} sm={2} md={2} lg={2}>
-                    <ChatSquareDots size={30}/>
+                    <ChatSquareDots color="rgb(63,131,214)" size={30}/>
                  </Col>
                  <Col  xs={4} sm={4} md={4} lg={4}>
                      <h4>TALKBOX</h4>

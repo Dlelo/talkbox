@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
+import SingleChat from './components/SingleChat'
 import AllChats from './components/AllChats';
 import NavigationBar from './components/NavigationBar';
 import Footer from './components/Footer';
@@ -20,10 +21,14 @@ function App() {
   // object distructuring
   return (
     < >
-    <NavigationBar/>
+    {/* <NavigationBar/> */}
     {/* we pass props to our components  eg prop chats in allChats component and we are passing a variable chat */}
-    <AllChats chats ={chats}/>
-    <Footer/>
+    {/* do not delete */}
+    {/* <AllChats chats ={chats}/> */}
+
+    {/* designing this */}
+    <SingleChat/>
+    {/* <Footer/> */}
     </>
   );
 }
