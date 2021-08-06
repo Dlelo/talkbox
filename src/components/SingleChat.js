@@ -44,7 +44,7 @@ export function SingleChat() {
                </div>
                <span class="time-left">11:05</span>
             </Row>
-            <Card Style={{border:'0'}}>
+            <Card className="chat-card" Style={{border:'0'}}>
                <Row style={{ bottom: 0, width:'100%', padding: '0.4rem', position: 'fixed', alignContent:'center' }}>
                   <Col  xs={5} sm={5} md={5} lg={5}>
                   </Col>

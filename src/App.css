@@ -1,4 +1,8 @@
 /* css for the single chat page */
+
+.chat-card{
+  border: 0;
+}
 /* Chat containers */
 .chatcontainer {
   background-color: #f1f1f1;
