@@ -1,0 +1,69 @@
+/* css for the single chat page */
+
+.chat-card{
+  border: 0;
+}
+/* Chat containers */
+.chatcontainer {
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 0.9em;
+  margin: 0.6em;
+  flex:auto;
+}
+
+/* Darker chat container */
+.darker {
+  border-color: #ccc;
+  background-color: rgb(63,131,214);
+  float: right
+}
+
+.light {
+  border-color: #ccc;
+  float: left;
+}
+
+.chatmsg {
+  color: #e4e0e0;
+  font-size: 20px;
+}
+
+.chatmsgdark {
+  color: #5f5c5c;
+  font-size: 20px;
+}
+/* Clear floats */
+.chatcontainer::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Style images */
+.chatcontainer img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+/* Style the right image */
+.chatcontainer img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+/* Style time text */
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+/* Style time text */
+.time-left {
+  float: left;
+  color: #999;
+}
