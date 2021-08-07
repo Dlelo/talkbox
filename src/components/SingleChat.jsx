@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import { ChevronLeft, Mic} from 'react-bootstrap-icons';
+import { ArrowLeft, Mic} from 'react-bootstrap-icons';
 import { Link } from "react-router-dom";
-
+import axios from 'axios';
 
 // Single Chat Component
 export function SingleChat() {
@@ -12,7 +12,7 @@ export function SingleChat() {
          <Col  xs={3} sm={2} md={2} lg={2}> 
              <Row>
                  <Col  xs={2} sm={2} md={2} lg={2}>
-                     <Link to='/'><ChevronLeft color="rgb(63,131,214)" size={30}/></Link>
+                     <Link to='/'><ArrowLeft color="rgb(63,131,214)" size={30}/></Link>
                  </Col>
              </Row>
              </Col>
@@ -24,32 +24,32 @@ export function SingleChat() {
           </Col>
          </Row>
             <Row>
-               <div class="chatcontainer light">
-               <p class="chatmsgdark">Hello. How are you today?</p>
+               <div className="chatcontainer light">
+               <p className="chatmsgdark">Hello. How are you today?</p>
                </div>
-               <span class="time-right">11:00</span>
+               <span className="time-right">11:00</span>
 
-               <div class="chatcontainer darker">
-               <p class="chatmsg">Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
+               <div className="chatcontainer darker">
+               <p className="chatmsg">Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
                </div>
-               <span class="time-left">11:01</span>
+               <span className="time-left">11:01</span>
 
-               <div class="chatcontainer light">
-               <p class="chatmsgdark">Sweet! So, what do you wanna do today?</p>
+               <div className="chatcontainer light">
+               <p className="chatmsgdark">Sweet! So, what do you wanna do today?</p>
                </div>
-               <span class="time-right">11:02</span>
+               <span className="time-right">11:02</span>
 
-               <div class="chatcontainer darker">
-               <p class="chatmsg">Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
+               <div className="chatcontainer darker">
+               <p className="chatmsg">Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
                </div>
-               <span class="time-left">11:05</span>
+               <span className="time-left">11:05</span>
             </Row>
             <Card className="chat-card" Style={{border:'0'}}>
                <Row style={{ bottom: 0, width:'100%', padding: '0.4rem', position: 'fixed', alignContent:'center' }}>
                   <Col  xs={5} sm={5} md={5} lg={5}>
                   </Col>
                   <Col  xs={4} sm={4} md={4} lg={4}>
-                     <Mic color="rgb(63,131,214)" size={30}/>
+                     <Mic color="rgb(63,131,214)"  size={30}/>
                   </Col>
                   <Col  xs={3} sm={3} md={3} lg={3}>
                   </Col>
