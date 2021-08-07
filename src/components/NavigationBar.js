@@ -13,7 +13,7 @@ import {ChatSquareDots} from 'react-bootstrap-icons';
 export function NavigationBar () {
    return (
        <Container>
-          <Row style={{ marginBottom: '5%', marginTop: '5%',}}>
+          <Row style={{ marginBottom: '2%', marginTop: '2%',}}>
           <Col  xs={6} sm={8} md={8} lg={8}> 
              <Row>
                  <Col  xs={2} sm={2} md={2} lg={2}>
