@@ -1,8 +1,29 @@
 import React from 'react';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card} from 'react-bootstrap';
 import { ArrowLeft, Mic} from 'react-bootstrap-icons';
 import { Link } from "react-router-dom";
-import axios from 'axios';
+import Axios from 'axios';
+
+function accessTokenFun(){
+   const getAccessToken=()=>{
+      const headers = {
+         'Ocp-Apim-Subscription-Key': 'application/json',
+         'Host': 'uksouth.api.cognitive.microsoft.com',
+         'Content-type': 'application/x-www-form-urlencoded',
+         'Content-Length': '0',
+       }
+       const url = "https://uksouth.api.cognitive.microsoft.com/sts/v1.0/issuetoken"
+       
+      Axios.post(url, {
+         headers:headers
+      }).then((response)=>{
+         console.log('response axios', response);
+      })
+   }
+
+   return getAccessToken
+}
+
 
 // Single Chat Component
 export function SingleChat() {
@@ -12,7 +33,7 @@ export function SingleChat() {
          <Col  xs={3} sm={2} md={2} lg={2}> 
              <Row>
                  <Col  xs={2} sm={2} md={2} lg={2}>
-                     <Link to='/'><ArrowLeft color="rgb(63,131,214)" size={30}/></Link>
+                     <Link to='/'> <button style={{backgroundColor:'rgb(199 218 241)', borderRadius:'100%', padding:'3px', borderColor:'rgb(199 218 241)', border:'0'}} onClick={accessTokenFun} ><ArrowLeft color="rgb(63,131,214)"  size={30}/></button></Link>
                  </Col>
              </Row>
              </Col>
@@ -49,7 +70,7 @@ export function SingleChat() {
                   <Col  xs={5} sm={5} md={5} lg={5}>
                   </Col>
                   <Col  xs={4} sm={4} md={4} lg={4}>
-                     <Mic color="rgb(63,131,214)"  size={30}/>
+                     <button style={{backgroundColor:'rgb(63,131,214)', borderRadius:'100%', padding:'3px', border:'0', borderColor:'rgb(63,131,214)'}} onClick={accessTokenFun} ><Mic color="#ccc"  size={30}/></button>
                   </Col>
                   <Col  xs={3} sm={3} md={3} lg={3}>
                   </Col>
