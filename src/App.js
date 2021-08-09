@@ -10,7 +10,6 @@ import { DisplaySingleChat } from './components/DisplaySingleChat';
 function App() {
   return (
     <Router history={History}>
-      {/* <ChatsFeed/> */}
       <Switch>
          <Route exact path='/'>
             <ChatsFeed/>
