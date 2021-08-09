@@ -10,13 +10,13 @@ export function ChatsFeed () {
     // theChats are all the chats inside theChats state and shoLatestChats is the function used to update the chats
      // the chat has 4 elements (image, name, message, createdTime)
     const [chats, showLatestChats] = useState([
-        {"image":"holder.js/100px180", "name":"Anjit Raj", "message": "How is the game going??", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"},
-        {"image":"holder.js/100px180", "name":"Anjit Raj", "message": "How is the game going??", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"},
-        {"image":"holder.js/100px180", "name":"Anjit Raj", "message": "How is the game going??", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"},
-        {"image":"holder.js/100px180", "name":"Anjit Raj", "message": "How is the game going??", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"}
+        {"image":"holder.js/100px180", "name":"Donattah A", "message": "How is the game going?? Some quick example text to build", "userType":"sender","time":"Wed Aug 04 2021 16:10:45 GMT+0300"},
+        {"image":"holder.js/100px180", "name":"Mat K.", "message": " Some quick example text to build", "userType":"receiver", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"},
+        {"image":"holder.js/100px180", "name":"Anthony K.", "message": "Hey", "userType":"receiver", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"},
+        {"image":"holder.js/100px180", "name":"Abba A.", "message": "How is are you?", "userType":"receiver", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"}
       ])
     return (
-        < >
+        < >     
           <NavigationBar/>
           {/* we pass props to our components  eg prop chats in allChats component and we are passing a variable chat */}
           <AllChats chats ={chats}/>

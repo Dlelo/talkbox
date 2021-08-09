@@ -1,10 +1,6 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import { Row } from 'react-bootstrap';
-import { Col } from 'react-bootstrap';
-import {Search} from 'react-bootstrap-icons';
-import {Person} from 'react-bootstrap-icons';
-import {ChatSquareDots} from 'react-bootstrap-icons';
+import { Container, Row, Col , Card} from 'react-bootstrap';
+import {Search, ChatSquareDots} from 'react-bootstrap-icons';
 
 
 
@@ -28,7 +24,7 @@ export function NavigationBar () {
              <Search size={30}/>
           </Col>
           <Col  xs={3} sm={2} md={2} lg={2}>
-              <Person size={30}/>
+          <Card style={{borderRadius: '100%', marginTop:'2px', height:'2.8rem', width:'2.8rem', backgroundImage: `url("./assets/images/donattah.jpeg")`, backgroundRepeat:'no-repeat', backgroundPosition:'center'}}><Card style={{borderRadius: '100%', marginTop:'90%', float:'right', height:'0.5rem', width:'0.5rem', backgroundColor:'green'}}></Card></Card>
           </Col>
           </Row>
         </Container>

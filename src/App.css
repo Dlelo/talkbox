@@ -16,12 +16,16 @@
 .darker {
   border-color: #ccc;
   background-color: rgb(63,131,214);
-  float: right
+  float: right;
+  color: #5f5c5c;
+  font-size: 20px;
 }
 
 .light {
   border-color: #ccc;
   float: left;
+  color: #e4e0e0;
+  font-size: 20px;
 }
 
 .chatmsg {
