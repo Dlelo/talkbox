@@ -2,7 +2,6 @@ import React , {useState}from 'react';
 import AllChats from './AllChats';
 import NavigationBar from './NavigationBar';
 import Footer from './Footer';
-import moment from 'moment';
 // ChatsFeed Component
 
 // three components (Navigation Bar, AllChats, Footer) will load on intial so they will be wrapped in an empty quotes called fragment

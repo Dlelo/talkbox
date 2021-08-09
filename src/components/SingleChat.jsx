@@ -51,7 +51,7 @@ export function SingleChat({chat}) {
                   <div className={className}>
                   <p className="msg">{chat?.message}</p>
                   </div>
-                  <span className="time-left">{thetime}</span>
+                  <span className="time">{thetime}</span>
                </Row>
                
                
