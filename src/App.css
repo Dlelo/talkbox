@@ -52,12 +52,13 @@
 }
 .text-style{
   display: inline-block;
+  margin-left: 2%;
 }
 
 /* Style time text */
 .time {
   margin-left: 25%;
   color: #5f5c5c;
-  font-size: 1 em;
+  font-size: 0.8em;
 }
 
