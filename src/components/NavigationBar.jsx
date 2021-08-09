@@ -24,7 +24,7 @@ export function NavigationBar () {
              <Search size={30}/>
           </Col>
           <Col  xs={3} sm={2} md={2} lg={2}>
-          <Card style={{borderRadius: '100%', marginTop:'2px', height:'2.8rem', width:'2.8rem', backgroundImage: `url("./assets/images/donattah.jpeg")`, backgroundRepeat:'no-repeat', backgroundPosition:'center'}}><Card style={{borderRadius: '100%', marginTop:'90%', float:'right', height:'0.5rem', width:'0.5rem', backgroundColor:'green'}}></Card></Card>
+          <Card style={{borderRadius: '100%', marginTop:'2px', height:'2.8rem', width:'2.8rem', backgroundImage: `url("./assets/images/donattah.jpeg")`, backgroundRepeat:'no-repeat', backgroundPosition:'center'}}><Card style={{borderRadius: '100%', marginTop:'59%', marginLeft:'65%', float:'right', height:'0.9rem', width:'0.9rem', backgroundColor:'green'}}></Card></Card>
           </Col>
           </Row>
         </Container>
