@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row} from 'react-bootstrap';
 import Axios from './../hooks/AxiosAccessTkn';
 import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
+import moment from 'moment';
 
 const speechsdk = require('microsoft-cognitiveservices-speech-sdk');
     
@@ -34,19 +35,23 @@ export function SingleChat({chat}) {
 
    let className = 'chatcontainer';
    if (chat.userType === 'sender'){
-      className+= 'darker';
+      className+= ' darker';
    } else if(chat.userType === 'receiver') {
-      className+= 'light';
+      className+= ' light';
    }
+
+   let formattedTime = moment(new Date(chat.time));
+   const thetime = formattedTime.format('h:mma');
+
       
       
    return (
          <Container>
                <Row> 
-                  <div className={{className}}>
+                  <div className={className}>
                   <p className="msg">{chat?.message}</p>
                   </div>
-                  <span className="time-left">{chat?.time}</span>
+                  <span className="time-left">{thetime}</span>
                </Row>
                
                

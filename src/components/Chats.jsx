@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 // Add router component to implement route
 
 export function Chats({chat}){
+    let formattedTime = moment(new Date(chat.time));
+   const thetime = formattedTime.fromNow();
     return(
            <Link to='/chat'>
                 <Container>
@@ -24,7 +26,7 @@ export function Chats({chat}){
                                             {chat?.name}
                                             </Card.Title>
                                     </Col>
-                                    <Col  xs={5} sm={5} md={3} lg={3}> <span style={{fontSize: '0.8rem', color:'rgb(150 152 154)'}}>2mins Ago</span></Col>
+                                    <Col  xs={5} sm={5} md={3} lg={3}> <span style={{fontSize: '0.8rem', color:'rgb(150 152 154)'}}>{{thetime}}</span></Col>
                                 </Row>
                                 <Row>
                                     <Col  xs={12} sm={12} md={12} lg={12}>

@@ -11,8 +11,8 @@ export function DisplaySingleChat () {
      const [chats, showSingleChat] = useState([
         {"name":"Donattah A.", "userType":"sender", "message": "How is the game going??", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"},
        { "name":"Aaron R.","userType":"receiver",  "message": "Its going fine.", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"},
-       { "name":"Sarah G.", "userType":"receiver", "message": "That is great!", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"},
-       { "name":"James K.", "userType":"receiver","message": "Enjoy! You will keep me updated??", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"}
+       { "name":"Sarah G.", "userType":"receiver", "message": "I am enjoying!", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"},
+       { "name":"James K.", "userType":"receiver","message": "I will keep you updated??", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"}
         ])
     return (
         < >   
