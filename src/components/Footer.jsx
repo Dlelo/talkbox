@@ -1,11 +1,6 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import { Row } from 'react-bootstrap';
-import { Col } from 'react-bootstrap';
-import {Card} from 'react-bootstrap';
-import {Telephone} from 'react-bootstrap-icons';
-import {HouseDoor} from 'react-bootstrap-icons';
-import {Bell} from 'react-bootstrap-icons'
+import { Container, Row , Col, Card} from 'react-bootstrap';
+import {Telephone, HouseDoor, Bell} from 'react-bootstrap-icons';
 import { Link } from "react-router-dom";
 
 

@@ -2,21 +2,17 @@
 import React from 'react'
 import { Card, Row , Container , Col } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import moment from 'moment';
   
-
-// function getTimetaken(theTime){
-//     const todayDate = new Date();
-//     let thePeriod = todayDate-theTime;
-//  return thePeriod
-// }
 
 // Add router component to implement route
 
 export function Chats({chat}){
+    let formattedTime = moment(new Date(chat.time));
+   const thetime = formattedTime.fromNow();
+   console.log('the time', thetime);
     return(
            <Link to='/chat'>
-           
-
                 <Container>
                     <Card style={{ marginBottom: '2%' , padding: '2%',  borderRadius: '0.45rem', boxShadow:'0 1px 6px 0 rgb(32 33 36 / 28%)'}}>
                         <Row>
@@ -32,12 +28,12 @@ export function Chats({chat}){
                                             {chat?.name}
                                             </Card.Title>
                                     </Col>
-                                    <Col  xs={5} sm={5} md={3} lg={3}> <span style={{fontSize: '0.7rem', color:'rgb(150 152 154)'}}>2mins Ago</span></Col>
+                                    <Col  xs={5} sm={5} md={3} lg={3}> <span style={{fontSize: '0.8rem', color:'rgb(150 152 154)'}}> {thetime}</span></Col>
                                 </Row>
                                 <Row>
                                     <Col  xs={12} sm={12} md={12} lg={12}>
                                         <Card.Text style={{color:'rgb(150 152 154)'}}>
-                                        Some quick example text to build {chat?.message}
+                                          {chat?.message}
                                         </Card.Text>
                                     </Col>
                                 </Row>
