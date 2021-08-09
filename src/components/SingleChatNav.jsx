@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 export function SingleChatNav () {
    return (
        <Container>
-          <Row>
+          <Row style={{marginBottom: '2rem'}}>
          <Col  xs={3} sm={2} md={2} lg={2}> 
              <Row>
                  <Col  xs={2} sm={2} md={2} lg={2}>

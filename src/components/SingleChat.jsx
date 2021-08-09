@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row} from 'react-bootstrap';
+import { Container, Row, Col} from 'react-bootstrap';
 import Axios from './../hooks/AxiosAccessTkn';
 import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
 import moment from 'moment';
@@ -47,12 +47,12 @@ export function SingleChat({chat}) {
       
    return (
          <Container>
-               <Row> 
-                  <div className={className}>
+               <Row className="text-style"> 
+                  <Col className={className}>
                   <p className="msg">{chat?.message}</p>
-                  </div>
-                  <span className="time">{thetime}</span>
+                  </Col>
                </Row>
+               <Row className="time">{thetime}</Row>
                
                
               

@@ -50,11 +50,14 @@
   margin-left: 20px;
   margin-right:0;
 }
+.text-style{
+  display: inline-block;
+}
 
 /* Style time text */
 .time {
-  margin-right: 50%;
+  margin-left: 25%;
   color: #5f5c5c;
-  font-size: '0.8rem';
+  font-size: 1 em;
 }
 
