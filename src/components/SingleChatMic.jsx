@@ -25,32 +25,6 @@ const { fetchTokenAction } = props
   
      console.log(tokenObj, "see the token object");
    
-
-
-   function sttFromMic() {
-        const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(tokenObj.authToken, tokenObj.region);
-        speechConfig.speechRecognitionLanguage = 'en-UK';
-        
-        const audioConfig = speechsdk.AudioConfig.fromDefaultMicrophoneInput();
-        const recognizer = new speechsdk.SpeechRecognizer(speechConfig, audioConfig);
-
-        this.setState({
-            displayText: 'speak...'
-        });
-
-        recognizer.recognizeOnceAsync(result => {
-            let displayText;
-            if (result.reason === ResultReason.RecognizedSpeech) {
-                displayText = `RECOGNIZED: Text=${result.text}`
-            } else {
-                displayText = 'ERROR: Speech was cancelled or could not be recognized. Ensure your microphone is working properly.';
-            }
-
-            this.setState({
-                displayText: displayText
-            });
-        });
-    }
    return (
        <Container>
            <Row>
@@ -70,6 +44,31 @@ const { fetchTokenAction } = props
         </Container>
    )
 };
+
+function sttFromMic() {
+    const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(tokenObj.authToken, tokenObj.region);
+    speechConfig.speechRecognitionLanguage = 'en-UK';
+    
+    const audioConfig = speechsdk.AudioConfig.fromDefaultMicrophoneInput();
+    const recognizer = new speechsdk.SpeechRecognizer(speechConfig, audioConfig);
+
+    this.setState({
+        displayText: 'speak...'
+    });
+
+    recognizer.recognizeOnceAsync(result => {
+        let displayText;
+        if (result.reason === ResultReason.RecognizedSpeech) {
+            displayText = `RECOGNIZED: Text=${result.text}`
+        } else {
+            displayText = 'ERROR: Speech was cancelled or could not be recognized. Ensure your microphone is working properly.';
+        }
+
+        this.setState({
+            displayText: displayText
+        });
+    });
+}
 
 function mapStateToProps(state){
     return{

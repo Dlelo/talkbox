@@ -4,15 +4,11 @@ import { BrowserRouter as Router , Route, Switch} from 'react-router-dom'
 import ChatsFeed from './components/ChatsFeed';
 import History from './components/History';
 import { DisplaySingleChat } from './components/DisplaySingleChat';
-import { Provider } from 'react-redux';
-import store from './store';
-
 
 
 function App() {
   return (
-    <Provider store={store}>
-      <Router history={History}>
+    <Router history={History}>
       <Switch>
          <Route exact path='/'>
             <ChatsFeed/>
@@ -22,8 +18,6 @@ function App() {
           </Route>
       </Switch>
     </Router>
-    </Provider>
-    
   );
 }
 
