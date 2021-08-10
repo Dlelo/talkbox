@@ -1,37 +1,30 @@
 import React, {useState, useEffect} from 'react';
+import { connect } from 'react-redux';
 import { Container, Row , Col, Card} from 'react-bootstrap';
 import {Mic} from 'react-bootstrap-icons';
-import Axios from "axios";
+import { fetchTokenAction } from '../store/Actions/actions';
 import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
+import { ServicePropertiesPropertyName } from 'microsoft-cognitiveservices-speech-sdk/distrib/lib/src/common.speech/Exports';
 const speechsdk = require('microsoft-cognitiveservices-speech-sdk')
 
-//  Component
-export function SingleChatMic () {
+// SingleChatMic Component
+const SingleChatMic = props =>{
+    
+const { fetchTokenAction } = props
    const [msg, setMessage] = useState([]);
-   const [tokenObj, setTokenObj] = useState("")
+   const [tokenObj , setTokenObj] = useState("")
+   const [responseStatus , setResponseStatus] = useState(200)
+    console.log( props, 'see props')
+ 
+    const getToken = async () => {
+        await fetchTokenAction()
+    }
+    useEffect(()=>{
+        getToken()
+     }, [responseStatus]);
+  
+     console.log(tokenObj, "see the token object");
    
-   const fetchToken = async() => {
-    return await fetch("https://uksouth.api.cognitive.microsoft.com/sts/v1.0/issueToken", {
-        method: 'POST',
-        headers: {
-          'Ocp-Apim-Subscription-Key': '0dc358cd8b9a42b58493eb2220e19984',
-          'Content-type': 'application/x-www-form-urlencoded',
-          'Content-Length': 0,
-         }
-         })
-         .then(res =>
-          res.json())
-         .then(json => 
-            console.log('token', json.token)
-         )
-         .catch(error =>
-            console.log('error', error.response)
-         )
-   }
-   console.log('fetchToken', fetchToken);
-
-
-
 
 
    function sttFromMic() {
@@ -78,5 +71,10 @@ export function SingleChatMic () {
    )
 };
 
+function mapStateToProps(state){
+    return{
+        token : state.token
+    };
+}
 
-export default SingleChatMic;
+export default connect(mapStateToProps, {fetchTokenAction})(SingleChatMic);

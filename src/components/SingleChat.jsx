@@ -1,7 +1,5 @@
 import React from 'react';
 import { Container, Row, Col} from 'react-bootstrap';
-import Axios from './../hooks/AxiosAccessTkn';
-import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
 import moment from 'moment';
 
 const speechsdk = require('microsoft-cognitiveservices-speech-sdk');
