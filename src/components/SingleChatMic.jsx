@@ -3,9 +3,7 @@ import { connect } from 'react-redux';
 import { Container, Row , Col, Card} from 'react-bootstrap';
 import {Mic} from 'react-bootstrap-icons';
 import { fetchTokenAction } from '../store/Actions/actions';
-import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
-import { ServicePropertiesPropertyName } from 'microsoft-cognitiveservices-speech-sdk/distrib/lib/src/common.speech/Exports';
-const speechsdk = require('microsoft-cognitiveservices-speech-sdk')
+import { SpeechFromMic } from './SpeechFromMic';
 
 // SingleChatMic Component
 const SingleChatMic = props =>{
@@ -14,16 +12,18 @@ const { fetchTokenAction } = props
    const [msg, setMessage] = useState({displayText: 'speak...'});
    const [tokenObj , setTokenObj] = useState("")
    const [responseStatus , setResponseStatus] = useState(200)
-    console.log( props, 'see props')
+   
  
     const getToken = async () => {
         await fetchTokenAction()
     }
+ 
     useEffect(()=>{
         getToken();
      }, [responseStatus]);
   
      console.log(tokenObj, "see the token object");
+     // console.log(tokenObj.region, "token region");
    
 
 
