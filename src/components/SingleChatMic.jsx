@@ -3,27 +3,27 @@ import { connect } from 'react-redux';
 import { Container, Row , Col, Card} from 'react-bootstrap';
 import {Mic} from 'react-bootstrap-icons';
 import { fetchTokenAction } from '../store/Actions/actions';
-import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
-import { ServicePropertiesPropertyName } from 'microsoft-cognitiveservices-speech-sdk/distrib/lib/src/common.speech/Exports';
-const speechsdk = require('microsoft-cognitiveservices-speech-sdk')
+import { SpeechFromMic } from './SpeechFromMic';
 
 // SingleChatMic Component
 const SingleChatMic = props =>{
     
-const { fetchTokenAction } = props
+   const { fetchTokenAction } = props
    const [msg, setMessage] = useState([]);
    const [tokenObj , setTokenObj] = useState("")
    const [responseStatus , setResponseStatus] = useState(200)
-    console.log( props, 'see props')
+   
  
     const getToken = async () => {
         await fetchTokenAction()
     }
+ 
     useEffect(()=>{
-        getToken()
-     }, [responseStatus]);
-  
+       getToken()
+    }, [responseStatus]);
+ 
      console.log(tokenObj, "see the token object");
+     console.log(tokenObj.region, "token region");
    
    return (
        <Container>
@@ -33,7 +33,7 @@ const { fetchTokenAction } = props
                   <Col  xs={5} sm={5} md={5} lg={5}>
                   </Col>
                   <Col  xs={4} sm={4} md={4} lg={4}>
-                     <button onClick={() => this.sttFromMic()} style={{backgroundColor:'rgb(63,131,214)', borderRadius:'100%', padding:'3px', border:'0', borderColor:'rgb(63,131,214)'}}><Mic color="#ccc"  size={30}/></button>
+                     <button onClick={SpeechFromMic(tokenObj)} style={{backgroundColor:'rgb(63,131,214)', borderRadius:'100%', padding:'3px', border:'0', borderColor:'rgb(63,131,214)'}}><Mic color="#ccc"  size={30}/></button>
                   </Col>
                   <Col  xs={3} sm={3} md={3} lg={3}>
                   </Col>
@@ -44,31 +44,6 @@ const { fetchTokenAction } = props
         </Container>
    )
 };
-
-function sttFromMic() {
-    const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(tokenObj.authToken, tokenObj.region);
-    speechConfig.speechRecognitionLanguage = 'en-UK';
-    
-    const audioConfig = speechsdk.AudioConfig.fromDefaultMicrophoneInput();
-    const recognizer = new speechsdk.SpeechRecognizer(speechConfig, audioConfig);
-
-    this.setState({
-        displayText: 'speak...'
-    });
-
-    recognizer.recognizeOnceAsync(result => {
-        let displayText;
-        if (result.reason === ResultReason.RecognizedSpeech) {
-            displayText = `RECOGNIZED: Text=${result.text}`
-        } else {
-            displayText = 'ERROR: Speech was cancelled or could not be recognized. Ensure your microphone is working properly.';
-        }
-
-        this.setState({
-            displayText: displayText
-        });
-    });
-}
 
 function mapStateToProps(state){
     return{
