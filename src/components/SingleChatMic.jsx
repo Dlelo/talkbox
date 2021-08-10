@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { Container, Row , Col, Card} from 'react-bootstrap';
 import {Mic} from 'react-bootstrap-icons';
 import { fetchTokenAction } from '../store/Actions/actions';
-import { SpeechFromMic } from './SpeechFromMic';
+import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
+import { ServicePropertiesPropertyName } from 'microsoft-cognitiveservices-speech-sdk/distrib/lib/src/common.speech/Exports';
+const speechsdk = require('microsoft-cognitiveservices-speech-sdk')
 
 // SingleChatMic Component
 const SingleChatMic = props =>{
