@@ -10,10 +10,10 @@ export function ChatsFeed () {
     // theChats are all the chats inside theChats state and shoLatestChats is the function used to update the chats
      // the chat has 4 elements (image, name, message, createdTime)
     const [chats, showLatestChats] = useState([
-        {"image":"holder.js/100px180", "name":"Donattah A", "message": "How is the game going?? Some quick example text to build", "userType":"sender","time":"Wed Aug 04 2021 12:10:45 GMT+0300"},
-        {"image":"holder.js/100px180", "name":"Mat K.", "message": " Some quick example text to build", "userType":"receiver", "time":"Tuesday Aug 09 2021 13:10:45 GMT+0300"},
-        {"image":"holder.js/100px180", "name":"Anthony K.", "message": "Hey", "userType":"receiver", "time":"Wed Aug 04 2021 14:10:45 GMT+0300"},
-        {"image":"holder.js/100px180", "name":"Abba A.", "message": "How is are you?", "userType":"receiver", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"}
+        {"image":"./assets/images/donattah.jpeg", "name":"Donattah A", "message": "How is the game going?? Some quick example text to build", "userType":"sender","time":"Wed Aug 04 2021 12:10:45 GMT+0300"},
+        {"image":"./assets/images/user2.jpeg", "name":"Mat K.", "message": " Some quick example text to build", "userType":"receiver", "time":"Tuesday Aug 09 2021 13:10:45 GMT+0300"},
+        {"image":"./assets/images/user3.jpeg", "name":"Anthony K.", "message": "Hey", "userType":"receiver", "time":"Wed Aug 04 2021 14:10:45 GMT+0300"},
+        {"image":"./assets/images/user4.jpeg", "name":"Abby A.", "message": "How is are you?", "userType":"receiver", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"}
       ])
     return (
         < >     
