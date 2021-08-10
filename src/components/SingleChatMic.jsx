@@ -5,28 +5,34 @@ import Axios from "axios";
 import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
 const speechsdk = require('microsoft-cognitiveservices-speech-sdk')
 
-// Footer Component
+//  Component
 export function SingleChatMic () {
    const [msg, setMessage] = useState([]);
-   const headers = {
-         'Ocp-Apim-Subscription-Key': '0dc358cd8b9a42b58493eb2220e19984',
-         'Host': 'uksouth.api.cognitive.microsoft.com',
-        'Content-type': 'application/x-www-form-urlencoded',
-         'Content-Length': '0',
-       }
-   const url = "https://uksouth.api.cognitive.microsoft.com/sts/v1.0/issuetoken"
-   let tokenObj = {};
-   useEffect(()=>{
-      Axios.post(url, {
-         headers:headers
-       }).then((response)=>{
-          tokenObj = response;
-          console.log('response accessing token', response);
-       })
-       .catch((error)=>
-          console.log('error accessing token', error)
-       )
-   });
+   const [tokenObj, setTokenObj] = useState("")
+   
+   const fetchToken = async() => {
+    return await fetch("https://uksouth.api.cognitive.microsoft.com/sts/v1.0/issueToken", {
+        method: 'POST',
+        headers: {
+          'Ocp-Apim-Subscription-Key': '0dc358cd8b9a42b58493eb2220e19984',
+          'Content-type': 'application/x-www-form-urlencoded',
+          'Content-Length': 0,
+         }
+         })
+         .then(res =>
+          res.json())
+         .then(json => 
+            console.log('token', json.token)
+         )
+         .catch(error =>
+            console.log('error', error.response)
+         )
+   }
+   console.log('fetchToken', fetchToken);
+
+
+
+
 
    function sttFromMic() {
         const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(tokenObj.authToken, tokenObj.region);
