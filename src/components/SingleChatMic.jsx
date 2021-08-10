@@ -11,7 +11,7 @@ const speechsdk = require('microsoft-cognitiveservices-speech-sdk')
 const SingleChatMic = props =>{
     
 const { fetchTokenAction } = props
-   const [msg, setMessage] = useState([]);
+   const [msg, setMessage] = useState({displayText: 'speak...'});
    const [tokenObj , setTokenObj] = useState("")
    const [responseStatus , setResponseStatus] = useState(200)
     console.log( props, 'see props')
@@ -20,23 +20,23 @@ const { fetchTokenAction } = props
         await fetchTokenAction()
     }
     useEffect(()=>{
-        getToken()
+        getToken();
      }, [responseStatus]);
   
      console.log(tokenObj, "see the token object");
    
 
 
-   function sttFromMic() {
-        const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(tokenObj.authToken, tokenObj.region);
+   function speechFromMic() {
+        const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(tokenObj.authToken, "uk-south");
         speechConfig.speechRecognitionLanguage = 'en-UK';
         
         const audioConfig = speechsdk.AudioConfig.fromDefaultMicrophoneInput();
         const recognizer = new speechsdk.SpeechRecognizer(speechConfig, audioConfig);
 
-        this.setState({
-            displayText: 'speak...'
-        });
+        // this.setState({
+        //     displayText: 'speak...'
+        // });
 
         recognizer.recognizeOnceAsync(result => {
             let displayText;
@@ -46,24 +46,28 @@ const { fetchTokenAction } = props
                 displayText = 'ERROR: Speech was cancelled or could not be recognized. Ensure your microphone is working properly.';
             }
 
-            this.setState({
-                displayText: displayText
-            });
+            this.msg = {displayText: displayText}
+            
         });
     }
    return (
        <Container>
            <Row>
-            <Card className="chat-card" Style={{border:'0'}}>
+            <Card className="chat-card" Style={{ border:'none' }}>
                <Row style={{ bottom: 0, width:'100%', padding: '0.4rem', position: 'fixed', alignContent:'center' }}>
                   <Col  xs={5} sm={5} md={5} lg={5}>
                   </Col>
                   <Col  xs={4} sm={4} md={4} lg={4}>
-                     <button onClick={() => this.sttFromMic()} style={{backgroundColor:'rgb(63,131,214)', borderRadius:'100%', padding:'3px', border:'0', borderColor:'rgb(63,131,214)'}}><Mic color="#ccc"  size={30}/></button>
+                     <button onClick={speechFromMic()}  className="micButton" style={{backgroundColor:'rgb(63,131,214)', borderRadius:'100%', padding:'3px', border:'0', borderColor:'rgb(63,131,214)'}}><Mic color="#ccc"  size={30}/></button>
                   </Col>
                   <Col  xs={3} sm={3} md={3} lg={3}>
                   </Col>
 
+               </Row>
+               <Row className="display-text">
+                   <Card>
+                   <code>{msg[0]}</code>
+                   </Card>
                </Row>
             </Card>
             </Row>

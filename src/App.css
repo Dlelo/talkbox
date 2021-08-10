@@ -44,6 +44,13 @@
   border-radius: 50%;
 }
 
+.display-text{
+  height: 4rem;
+  border-top: 0;
+  background-color: rgb(222 217 217 / 13%);
+  display: none;
+}
+
 /* Style the right image */
 .chatcontainer img.right {
   float: right;
@@ -61,4 +68,20 @@
   color: #5f5c5c;
   font-size: 0.8em;
 }
-
+.micButton{
+  background-color:'rgb(63,131,214)' !important;
+  border-radius:'100%' !important;
+  padding:'3px' !important;
+  border:'0' !important;
+  border-color:'rgb(63,131,214)' !important;
+     
+}
+.changeBackgroundRed{
+  background-color: red;
+}
+.changeDisplay{
+  display: block !important;
+}
+.display-the-text{
+  display: none !important;
+}
