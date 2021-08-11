@@ -9,10 +9,10 @@ export function DisplaySingleChat () {
     // theChats are all the chats inside theChats state and shoLatestChats is the function used to update the chats
      // the chat has 4 elements (image, name, message, createdTime)
      const [chats, showSingleChat] = useState([
-        {"name":"Donattah A.", "userType":"sender", "message": "How is the game going??", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"},
-       { "name":"Aaron R.","userType":"receiver",  "message": "Its going fine.", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"},
-       { "name":"Sarah G.", "userType":"receiver", "message": "I am enjoying!", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"},
-       { "name":"James K.", "userType":"receiver","message": "I will keep you updated??", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"}
+       {"id":"1","name":"Donattah A.", "userType":"sender", "message": "How is the game going??", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"},
+       {"id":"2", "name":"Aaron R.","userType":"receiver",  "message": "Its going fine.", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"},
+       { "id":"3","name":"Sarah G.", "userType":"receiver", "message": "I am enjoying!", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"},
+       { "id":"4","name":"James K.", "userType":"receiver","message": "I will keep you updated??", "time":"Wed Aug 04 2021 16:10:45 GMT+0300"}
         ])
     return (
         < >   

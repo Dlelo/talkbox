@@ -6,7 +6,7 @@ export default function OneChat ({chats}) {
     return (
         // loop through an array of chats list
         chats.map(chat => {
-            return <SingleChat chat ={chat} />
+            return <SingleChat key={chat} chat ={chat} />
         })
     )
 };

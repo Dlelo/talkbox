@@ -5,7 +5,7 @@ export default function AllChats ({chats}) {
    return (
        // loop through an array of chats list
        chats.map(chat => {
-           return <Chats chat ={chat} />
+           return <Chats key={chat} chat ={chat} />
        })
    )
 };

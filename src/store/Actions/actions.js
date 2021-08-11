@@ -21,11 +21,11 @@ function fetchTokenAction(){
     return(dispatch) => {
         dispatch(fetchToken());
         const headers = {
-            'Ocp-Apim-Subscription-Key': '0dc358cd8b9a42b58493eb2220e19984',
+            'Ocp-Apim-Subscription-Key': '5e636f783d364748b752dc2230ab72cc',
             'Content-type': 'application/x-www-form-urlencoded',
             'Content-Length': 0,
           }
-        axios.post("https://uksouth.api.cognitive.microsoft.com/sts/v1.0/issueToken",{}, {
+        axios.post("https://centralus.api.cognitive.microsoft.com/sts/v1.0/issuetoken",{}, {
             headers
           })
           .then(data => {
