@@ -9,12 +9,10 @@ const speechsdk = require('microsoft-cognitiveservices-speech-sdk')
 // SingleChatMic Component
 const SingleChatMic = props =>{
     
-   const { fetchTokenAction } = props
-   const [msg, setMessage] = useState([]);
-   const [tokenObj , setTokenObj] = useState("")
-   const [responseStatus , setResponseStatus] = useState(200)
-   console.log(props, "the state")
-   
+    const { fetchTokenAction, token } = props
+    const [msg, setMessage] = useState('speak...');
+    const [isValidToken , setIsValidToken] = useState(false)
+    const token_timout_duration = 10*60*1000;
  
     const getToken = async () => {
         await fetchTokenAction()
@@ -22,35 +20,36 @@ const SingleChatMic = props =>{
  
     useEffect(()=>{
         getToken();
-     }, [responseStatus]);
+     }, [isValidToken]);
+
+     useEffect(() => {
+        const interval = setInterval(() => {
+            setIsValidToken(!isValidToken)
+        }, token_timout_duration);
+        return () => clearInterval(interval);
+        }, []) 
   
-     console.log(tokenObj, "see the token object");
-     // console.log(tokenObj.region, "token region");
 
-
-   function speechFromMic() {
-        const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(tokenObj.authToken, tokenObj.region);
-        speechConfig.speechRecognitionLanguage = 'en-UK';
-        
-        const audioConfig = speechsdk.AudioConfig.fromDefaultMicrophoneInput();
-        const recognizer = new speechsdk.SpeechRecognizer(speechConfig, audioConfig);
-
-        // this.setMessage({
-        //     displayText: 'speak...'
-        // });
-
-        recognizer.recognizeOnceAsync(result => {
-            let displayText;
-            if (result.reason === ResultReason.RecognizedSpeech) {
-                displayText = `RECOGNIZED: Text=${result.text}`
-            } else {
-                displayText = 'ERROR: Speech was cancelled or could not be recognized. Ensure your microphone is working properly.';
-            }
-
-            this.msg = {displayText: displayText}
+        function speechFromMic() {
+            const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(token, 'uk-south');
+            speechConfig.speechRecognitionLanguage = 'en-UK';       
+            const audioConfig = speechsdk.AudioConfig.fromDefaultMicrophoneInput();
+            const recognizer = new speechsdk.SpeechRecognizer(speechConfig, audioConfig);
             
-        });
-    }
+            recognizer.recognizeOnceAsync(result => {
+                 console.log(result, "the result")
+                 let displayText;
+                 if (result.reason === ResultReason.RecognizedSpeech) {
+                     console.log(result, 'recodnized speech results')
+                     displayText = `RECOGNIZED: Text=${result.text}`
+                     setMessage(result?.text)
+                 } else {
+                     displayText = 'ERROR: Speech was cancelled or could not be recognized. Ensure your microphone is working properly.';
+                     setMessage(displayText)
+                 }
+                 
+             });
+         }
    return (
        <Container>
            <Row>
@@ -78,8 +77,9 @@ const SingleChatMic = props =>{
 
 function mapStateToProps(state){
     return{
-        token : state.token
+        token : state.token?.token?.data
     };
 }
+
 
 export default connect(mapStateToProps, {fetchTokenAction})(SingleChatMic);
