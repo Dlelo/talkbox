@@ -14,7 +14,7 @@ export function Chats({chat}){
     return(
            <Link to='/chat'>
                 <Container>
-                    <Card style={{ marginBottom: '2%' , padding: '2%',  borderRadius: '0.45rem', boxShadow:'0 1px 6px 0 rgb(32 33 36 / 28%)'}}>
+                    <Card style={{ marginBottom: '2%' , padding: '2%',  borderRadius: '0.45rem', border:'0', boxShadow: '1px 4px 9px 0px rgb(32 33 36 / 28%)'}}>
                         <Row>
                             <Col  xs={4} sm={3} md={3} lg={3}>
                                 <Card style={{borderRadius: '0.45rem', height:'8rem', backgroundImage: `url(${chat?.image})`, backgroundRepeat:'no-repeat', backgroundPosition:'center'}}>
