@@ -4,16 +4,16 @@ import { Container, Row , Col, Card} from 'react-bootstrap';
 import {Mic} from 'react-bootstrap-icons';
 import { fetchTokenAction } from '../store/Actions/actions';
 import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
-import { ServicePropertiesPropertyName } from 'microsoft-cognitiveservices-speech-sdk/distrib/lib/src/common.speech/Exports';
 const speechsdk = require('microsoft-cognitiveservices-speech-sdk')
 
 // SingleChatMic Component
 const SingleChatMic = props =>{
     
-const { fetchTokenAction } = props
-   const [msg, setMessage] = useState({displayText: 'speak...'});
+   const { fetchTokenAction } = props
+   const [msg, setMessage] = useState([]);
    const [tokenObj , setTokenObj] = useState("")
    const [responseStatus , setResponseStatus] = useState(200)
+   console.log(props, "the state")
    
  
     const getToken = async () => {
@@ -26,17 +26,16 @@ const { fetchTokenAction } = props
   
      console.log(tokenObj, "see the token object");
      // console.log(tokenObj.region, "token region");
-   
 
 
    function speechFromMic() {
-        const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(tokenObj.authToken, "uk-south");
+        const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(tokenObj.authToken, tokenObj.region);
         speechConfig.speechRecognitionLanguage = 'en-UK';
         
         const audioConfig = speechsdk.AudioConfig.fromDefaultMicrophoneInput();
         const recognizer = new speechsdk.SpeechRecognizer(speechConfig, audioConfig);
 
-        // this.setState({
+        // this.setMessage({
         //     displayText: 'speak...'
         // });
 
@@ -60,7 +59,7 @@ const { fetchTokenAction } = props
                   <Col  xs={5} sm={5} md={5} lg={5}>
                   </Col>
                   <Col  xs={4} sm={4} md={4} lg={4}>
-                     <button onClick={speechFromMic()}  className="micButton" style={{backgroundColor:'rgb(63,131,214)', borderRadius:'100%', padding:'3px', border:'0', borderColor:'rgb(63,131,214)'}}><Mic color="#ccc"  size={30}/></button>
+                  <button onClick={speechFromMic()}  className="micButton" style={{backgroundColor:'rgb(63,131,214)', borderRadius:'100%', padding:'3px', border:'0', borderColor:'rgb(63,131,214)'}}><Mic color="#ccc"  size={30}/></button>
                   </Col>
                   <Col  xs={3} sm={3} md={3} lg={3}>
                   </Col>
