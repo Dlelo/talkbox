@@ -32,7 +32,7 @@ const SingleChatMic = props =>{
 
         function speechFromMic() {
             const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(token, 'uk-south');
-            speechConfig.speechRecognitionLanguage = 'en-UK';       
+            speechConfig.speechRecognitionLanguage = 'uk-south';       
             const audioConfig = speechsdk.AudioConfig.fromDefaultMicrophoneInput();
             const recognizer = new speechsdk.SpeechRecognizer(speechConfig, audioConfig);
             
@@ -40,12 +40,13 @@ const SingleChatMic = props =>{
                  console.log(result, "the result")
                  let displayText;
                  if (result.reason === ResultReason.RecognizedSpeech) {
-                     console.log(result, 'recodnized speech results')
+                     console.log(result, 'recognized speech results')
                      displayText = `RECOGNIZED: Text=${result.text}`
                      setMessage(result?.text)
                  } else {
-                     displayText = 'ERROR: Speech was cancelled or could not be recognized. Ensure your microphone is working properly.';
+                     displayText = result?.errorDetails + ' ERROR: Speech was cancelled or could not be recognized. Ensure your microphone is working properly.';
                      setMessage(displayText)
+                     console.log('error', result?.errorDetails);
                  }
                  
              });
@@ -66,7 +67,7 @@ const SingleChatMic = props =>{
                </Row>
                <Row className="display-text">
                    <Card>
-                   <code>{msg[0]}</code>
+                   <code>{msg}</code>
                    </Card>
                </Row>
             </Card>
