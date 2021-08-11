@@ -31,13 +31,13 @@ const SingleChatMic = props =>{
   
 
         function speechFromMic() {
-            const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(token, 'uk-south');
-            speechConfig.speechRecognitionLanguage = 'uk-south';       
+            const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(token, 'centralus');
+            speechConfig.speechRecognitionLanguage = 'centralus';       
             const audioConfig = speechsdk.AudioConfig.fromDefaultMicrophoneInput();
             const recognizer = new speechsdk.SpeechRecognizer(speechConfig, audioConfig);
-            
+            console.log(ResultReason.RecognizedSpeech, "the result reason recognizer result")
             recognizer.recognizeOnceAsync(result => {
-                 console.log(result, "the result")
+                 console.log(result, "the speech recognizer result")
                  let displayText;
                  if (result.reason === ResultReason.RecognizedSpeech) {
                      console.log(result, 'recognized speech results')
