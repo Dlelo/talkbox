@@ -10,9 +10,11 @@ const speechsdk = require('microsoft-cognitiveservices-speech-sdk')
 const SingleChatMic = props =>{
     
     const { fetchTokenAction, token } = props
-    const [msg, setMessage] = useState('speak...');
+    const [msg, setMessage] = useState('Speak...');
     const [isValidToken , setIsValidToken] = useState(false)
     const token_timout_duration = 10*60*1000;
+
+    let micColor
  
     const getToken = async () => {
         await fetchTokenAction()
@@ -29,10 +31,12 @@ const SingleChatMic = props =>{
         return () => clearInterval(interval);
         }, []) 
   
-
+     if(msg === "Speak ..."){
+        micColor = "red"
+     }
         function speechFromMic() {
             const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(token, 'centralus');
-            speechConfig.speechRecognitionLanguage = 'centralus';       
+            speechConfig.speechRecognitionLanguage = 'en-Us';       
             const audioConfig = speechsdk.AudioConfig.fromDefaultMicrophoneInput();
             const recognizer = new speechsdk.SpeechRecognizer(speechConfig, audioConfig);
             console.log(ResultReason.RecognizedSpeech, "the result reason recognizer result")
@@ -59,15 +63,15 @@ const SingleChatMic = props =>{
                   <Col  xs={5} sm={5} md={5} lg={5}>
                   </Col>
                   <Col  xs={4} sm={4} md={4} lg={4}>
-                  <button onClick={speechFromMic()}  className="micButton" style={{backgroundColor:'rgb(63,131,214)', borderRadius:'100%', padding:'3px', border:'0', borderColor:'rgb(63,131,214)'}}><Mic color="#ccc"  size={30}/></button>
+                  <button onClick={speechFromMic()} color={micColor} className="micButton" style={{backgroundColor:'rgb(63,131,214)', borderRadius:'100%', padding:'3px', border:'0', borderColor:'rgb(63,131,214)'}}><Mic color="#ccc"  size={30}/></button>
                   </Col>
                   <Col  xs={3} sm={3} md={3} lg={3}>
                   </Col>
 
                </Row>
-               <Row className="display-text">
-                   <Card>
-                   <code>{msg}</code>
+               <Row className="displayTheText">
+                   <Card className="displayTheText">
+                   <code className="displayTheText">{msg}</code>
                    </Card>
                </Row>
             </Card>
