@@ -68,7 +68,7 @@ const SingleChatMic = props =>{
                   <Col  xs={5} sm={5} md={5} lg={5}>
                   </Col>
                   <Col  xs={4} sm={4} md={4} lg={4}>
-                    <button onClick={speechFromMic()} className="micButton" style={{backgroundColor:color, borderRadius: "100%", borderColor:color, backgroundSize: "cover" }}><Mic color="#ccc"  size={30}/></button>
+                    <button onClick={speechFromMic()} className="micButton" style={{backgroundColor:color, borderRadius: "100%", height:"3rem", width:"3rem", borderColor:color, backgroundSize: "cover" }}><Mic color="#ccc"  size={30}/></button>
                   </Col>
                   <Col  xs={3} sm={3} md={3} lg={3}>
                   </Col>
