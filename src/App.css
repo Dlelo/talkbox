@@ -86,7 +86,10 @@ button .micButton{
   display: block;
   background-color: #F1F1F1;
   border: none;
-  height: 8rem;
+  height: 6rem;
   margin: 1%;
   padding: 2%;
+}
+.send-arrow{
+  float:right;
 }

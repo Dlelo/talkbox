@@ -8,6 +8,7 @@ const speechsdk = require('microsoft-cognitiveservices-speech-sdk');
 
 // Single Chat Component
 export function SingleChat({chat}) {
+   const {msg, setMessage} = chat;
 
    let className = 'chatcontainer';
    if (chat.userType === 'sender'){

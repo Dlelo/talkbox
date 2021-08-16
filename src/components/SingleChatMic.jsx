@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import { Container, Row , Col, Card} from 'react-bootstrap';
-import {Mic} from 'react-bootstrap-icons';
+import {ArrowUpCircleFill, Mic} from 'react-bootstrap-icons';
 import { fetchTokenAction } from '../store/Actions/actions';
 import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
 const speechsdk = require('microsoft-cognitiveservices-speech-sdk')
@@ -9,13 +9,14 @@ const speechsdk = require('microsoft-cognitiveservices-speech-sdk')
 // SingleChatMic Component
 const SingleChatMic = props =>{
     
-    const { fetchTokenAction, token } = props
+    const { fetchTokenAction, token } = props;
     const [msg, setMessage] = useState('Speak...');
     const [isValidToken , setIsValidToken] = useState(false)
     const token_timout_duration = 10*60*1000;
-    const [showMsg, setShowMsg] = React.useState(false)
+    const {showMsg, setShowMsg} = React.useState(false);
+    const [color, setColor] = useState('rgb(63,131,214)');
+    const [sendarrowcolor, setSendArrowColor] = useState('rgb(150, 152, 154)');
 
-    let micColor
  
     const getToken = async () => {
         await fetchTokenAction()
@@ -32,9 +33,6 @@ const SingleChatMic = props =>{
         return () => clearInterval(interval);
         }, []) 
   
-     if(msg === "Speak ..."){
-        micColor = "red"
-     }
     function speechFromMic() {
         //setShowMsg(true)
         const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(token, 'centralus');
@@ -49,6 +47,8 @@ const SingleChatMic = props =>{
                 console.log(result, 'recognized speech results')
                 displayText = `RECOGNIZED: Text=${result.text}`
                 setMessage(result?.text)
+                setColor('red');
+                setSendArrowColor('rgb(63,131,214)')
             } else {
                 displayText = result?.errorDetails + ' ERROR: Speech was cancelled or could not be recognized. Ensure your microphone is working properly.';
                 setMessage(displayText)
@@ -60,14 +60,13 @@ const SingleChatMic = props =>{
    return (
        <Container>
            <Row>
-            <Card className="chat-card" style={{ border:'none' }}>
-                {/* { showMsg ?  <Card className="displayTheText"><p>{msg}</p></Card> : null } */}
-                <Card className="displayTheText"><p>{msg}</p></Card>
+            <Card className="chat-card" style={{ border:'none' }}>   
+                <Card className="displayTheText"><p>{msg} <span className="send-arrow" style={{color:sendarrowcolor}}><ArrowUpCircleFill size={25}/></span></p></Card>
                <Row style={{ bottom: 0, width:'100%', padding: '0.4rem', position: 'fixed', alignContent:'center' }}>
                   <Col  xs={5} sm={5} md={5} lg={5}>
                   </Col>
                   <Col  xs={4} sm={4} md={4} lg={4}>
-                    <button onClick={speechFromMic()} className="micButton"><Mic color="#ccc"  size={30}/></button>
+                    <button onClick={speechFromMic()} className="micButton" style={{backgroundColor:color, borderRadius: "100%", borderColor:color }}><Mic color="#ccc"  size={30}/></button>
                   </Col>
                   <Col  xs={3} sm={3} md={3} lg={3}>
                   </Col>
