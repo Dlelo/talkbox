@@ -17,7 +17,7 @@ export function Chats({chat}){
                     <Card style={{ marginBottom: '2%' , padding: '2%',  borderRadius: '0.45rem', border:'0', boxShadow: '1px 4px 9px 0px rgb(32 33 36 / 28%)'}}>
                         <Row>
                             <Col  xs={4} sm={3} md={3} lg={3}>
-                                <Card style={{borderRadius: '0.45rem', height:'8rem', backgroundImage: `url(${chat?.image})`, backgroundRepeat:'no-repeat', backgroundPosition:'center'}}>
+                                <Card style={{borderRadius: '0.45rem', height:'8rem', backgroundImage: `url(${chat?.image})`, backgroundRepeat:'no-repeat', backgroundSize:"cover", backgroundPosition:'center'}}>
                                 {/* <Card.Img variant="top" src="./assets/images/donattah.jpeg" alt="photo" style={{height: "8rem"}}/> */}
                                 </Card>
                             </Col>

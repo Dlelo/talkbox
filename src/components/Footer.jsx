@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export function Footer () {
    return (
        <Container>
-           <Card style={{ borderRadius: '100px', height:'4rem', boxShadow:'1px 0px 17px 9px rgb(32 33 36 / 28%)' }}>
+           <Card style={{ borderRadius: '100px', height:'3.5rem', boxShadow:'1px 0px 17px 9px rgb(32 33 36 / 28%)' }}>
             <Row style={{ padding: '1rem'}}>
                     <Col  xs={5} sm={7} md={6} lg={6}> 
                        <Telephone color="rgb(150 152 154)" size={30} />
