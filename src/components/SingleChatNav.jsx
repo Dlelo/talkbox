@@ -22,7 +22,7 @@ export function SingleChatNav () {
           <h4>Donattah A.</h4>
           </Col>
           <Col  xs={2} sm={1} md={1} lg={1}>
-              <Card style={{borderRadius: '0.45rem', marginTop:'2px', height:'3rem', width:'3rem',  backgroundImage: `url("./assets/images/donattah.jpeg")`, backgroundRepeat:'no-repeat', backgroundPosition:'center'}}></Card>
+              <Card style={{borderRadius: '0.45rem', marginTop:'2px', height:'3rem', width:'3rem',  backgroundImage: `url("./assets/images/donattah.jpeg")`, backgroundSize: "cover", backgroundRepeat:'no-repeat', backgroundPosition:'center'}}></Card>
           </Col>
          </Row>
         </Container>

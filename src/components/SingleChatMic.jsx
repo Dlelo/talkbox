@@ -13,7 +13,7 @@ const SingleChatMic = props =>{
     const [msg, setMessage] = useState('Speak...');
     const [isValidToken , setIsValidToken] = useState(false)
     const token_timout_duration = 10*60*1000;
-    const {showMsg, setShowMsg} = React.useState(false);
+    const [showMsgHolder, setMsgHolder] = useState('none');
     const [color, setColor] = useState('rgb(63,131,214)');
     const [sendarrowcolor, setSendArrowColor] = useState('rgb(150, 152, 154)');
 
@@ -46,13 +46,15 @@ const SingleChatMic = props =>{
             if (result.reason === ResultReason.RecognizedSpeech) {
                 console.log(result, 'recognized speech results')
                 displayText = `RECOGNIZED: Text=${result.text}`
-                setMessage(result?.text)
+                setMessage(result?.text);
                 setColor('red');
-                setSendArrowColor('rgb(63,131,214)')
+                setSendArrowColor('rgb(63,131,214)');
+                setMsgHolder('block');
             } else {
                 displayText = result?.errorDetails + ' ERROR: Speech was cancelled or could not be recognized. Ensure your microphone is working properly.';
                 setMessage(displayText)
                 console.log('error', result?.errorDetails);
+                setMsgHolder('block');
             }
             
         });
@@ -61,12 +63,12 @@ const SingleChatMic = props =>{
        <Container>
            <Row>
             <Card className="chat-card" style={{ border:'none' }}>   
-                <Card className="displayTheText"><p>{msg} <span className="send-arrow" style={{color:sendarrowcolor}}><ArrowUpCircleFill size={25}/></span></p></Card>
+                <Card className="displayTheText" style={{display:showMsgHolder}}><p>{msg} <span className="send-arrow" style={{color:sendarrowcolor}}><ArrowUpCircleFill size={25}/></span></p></Card>
                <Row style={{ bottom: 0, width:'100%', padding: '0.4rem', position: 'fixed', alignContent:'center' }}>
                   <Col  xs={5} sm={5} md={5} lg={5}>
                   </Col>
                   <Col  xs={4} sm={4} md={4} lg={4}>
-                    <button onClick={speechFromMic()} className="micButton" style={{backgroundColor:color, borderRadius: "100%", borderColor:color }}><Mic color="#ccc"  size={30}/></button>
+                    <button onClick={speechFromMic()} className="micButton" style={{backgroundColor:color, borderRadius: "100%", borderColor:color, backgroundSize: "cover" }}><Mic color="#ccc"  size={30}/></button>
                   </Col>
                   <Col  xs={3} sm={3} md={3} lg={3}>
                   </Col>
