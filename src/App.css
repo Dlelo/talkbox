@@ -16,7 +16,7 @@
 .darker {
   border-color: #ccc;
   background-color: rgb(63,131,214);
-  float: right;
+  align-self: flex-end;
   color: #e4e0e0;
   font-size: 20px;
 }
