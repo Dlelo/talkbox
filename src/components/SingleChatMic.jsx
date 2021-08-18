@@ -69,11 +69,8 @@ const SingleChatMic = props =>{
         time: Date.now(),
         userType: "sender"
         }
-        // dispatch(addChat([...chats, doc]));
-        dispatch(
-            addChat(
-                chats.push(newChat)
-                ));
+         dispatch(addChat([chats.push(newChat)]));
+         console.log('chats after adding speech', chats)
     }
    return (
        <>
