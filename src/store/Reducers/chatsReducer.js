@@ -12,11 +12,11 @@ const initialState = {
 export default function chatsReducer(state = initialState, action) {
   switch (action.type) {
     case types.CHATS:
-        return {...state};
-    case types.CHATS_SUCCESS:
+        return {...state, chats:action};
+    case types.ADD_CHAT:
         return {...state, chats: action};
-    case types.CHATS_FAILS:
-        return {...state, error: action.error}
+    case types.CLEAR_CHATS:
+        return {...state, chats:[]}
     default:
       return state;
   }

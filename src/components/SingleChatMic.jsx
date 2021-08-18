@@ -2,22 +2,25 @@ import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import { Container, Row , Col, Card} from 'react-bootstrap';
 import {ArrowUpCircleFill, Mic} from 'react-bootstrap-icons';
-import { fetchTokenAction } from '../store/Actions/actions';
+import { fetchTokenAction, addChat } from '../store/Actions/actions';
 import { ResultReason } from 'microsoft-cognitiveservices-speech-sdk';
+import { useDispatch } from 'react-redux';
+import OneChat from './OneChat';
+
 const speechsdk = require('microsoft-cognitiveservices-speech-sdk')
 
 // SingleChatMic Component
 const SingleChatMic = props =>{
     
-    const { fetchTokenAction, token } = props;
+    const { fetchTokenAction, token, chats } = props;
     const [msg, setMessage] = useState('Speak...');
     const [isValidToken , setIsValidToken] = useState(false)
     const token_timout_duration = 10*60*1000;
     const [showMsgHolder, setMsgHolder] = useState('none');
     const [color, setColor] = useState('rgb(63,131,214)');
     const [sendarrowcolor, setSendArrowColor] = useState('rgb(150, 152, 154)');
+    const dispatch = useDispatch()
 
- 
     const getToken = async () => {
         await fetchTokenAction()
     }
@@ -34,17 +37,13 @@ const SingleChatMic = props =>{
         }, []) 
   
     function speechFromMic() {
-        //setShowMsg(true)
         const speechConfig = speechsdk.SpeechConfig.fromAuthorizationToken(token, 'centralus');
         speechConfig.speechRecognitionLanguage = 'en-Us';       
         const audioConfig = speechsdk.AudioConfig.fromDefaultMicrophoneInput();
         const recognizer = new speechsdk.SpeechRecognizer(speechConfig, audioConfig);
-        console.log(ResultReason.RecognizedSpeech, "the result reason recognizer result")
         recognizer.recognizeOnceAsync(result => {
-            console.log(result, "the speech recognizer result")
             let displayText;
             if (result.reason === ResultReason.RecognizedSpeech) {
-                console.log(result, 'recognized speech results')
                 displayText = `RECOGNIZED: Text=${result.text}`
                 setMessage(result?.text);
                 setColor('red');
@@ -59,11 +58,30 @@ const SingleChatMic = props =>{
             
         });
     }
+    const updateChats = (e) => {
+        e.preventDefault()
+        const newChatId = chats.length + 1
+        const newChat = {
+        id: newChatId,
+        image: "./assets/images/donattah.jpeg",
+        message: msg,
+        name: "Donattah A",
+        time: Date.now(),
+        userType: "sender"
+        }
+        // dispatch(addChat([...chats, doc]));
+        dispatch(
+            addChat(
+                chats.push(newChat)
+                ));
+    }
    return (
+       <>
+       <OneChat chats ={chats}/>
        <Container>
            <Row>
             <Card className="chat-card" style={{ border:'none' }}>   
-                <Card className="displayTheText" style={{display:showMsgHolder}}><p>{msg} <span className="send-arrow" style={{color:sendarrowcolor}}><ArrowUpCircleFill size={25}/></span></p></Card>
+                <Card className="displayTheText" style={{display:showMsgHolder}}><p>{msg} <span className="send-arrow" style={{color:sendarrowcolor}}><button onClick={(e) => updateChats(e)}><ArrowUpCircleFill size={25}/></button></span></p></Card>
                <Row style={{ bottom: 0, width:'100%', padding: '0.4rem', position: 'fixed', alignContent:'center' }}>
                   <Col  xs={5} sm={5} md={5} lg={5}>
                   </Col>
@@ -77,12 +95,15 @@ const SingleChatMic = props =>{
             </Card>
             </Row>
         </Container>
+       </>
+       
    )
 };
 
 function mapStateToProps(state){
     return{
-        token : state.token?.token?.data
+        token : state.token?.token?.data,
+        chats : state.chats?.chats
     };
 }
 

@@ -24,7 +24,7 @@ export function SingleChat({chat}) {
       
    return (
          <Container>
-               <Row className="text-style"> 
+               <Row className='text-style'> 
                   <Col className={className}>
                   <p className="msg">{chat?.message}</p>
                   </Col>
